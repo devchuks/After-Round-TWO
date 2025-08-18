@@ -470,7 +470,7 @@ class AfterRoundOneGame {
         loserDiv.innerHTML = `
             <div class="alert alert-danger">
                 <h4>😬 ${loser} LOSES!</h4>
-                <p class="mb-0">Never guessed ${this.guesses[loser]}... SLAP HIN JOOR! 👋</p>
+                <p class="mb-0">Never guessed ${this.guesses[loser]}... MAKE UNA SLAP THAT HAND JOOR! 👋</p>
             </div>
         `;
         statusContainer.appendChild(loserDiv);
