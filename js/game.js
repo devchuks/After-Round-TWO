@@ -187,14 +187,41 @@ class AfterRoundOneGame {
         }, this.chantLines.length * 1000);
     }
 
-    sayYaso() {
-        const container = document.getElementById('chant-container');
-        container.innerHTML = '<div class="chant-line">🗣️ YASO!</div>';
+    // sayYaso() {
+    //     const container = document.getElementById('chant-container');
+    //     container.innerHTML = '<div class="chant-line">🗣️ YASO!</div>';
 
-        setTimeout(() => {
-            this.showFingers();
-        }, 1000);
-    }
+    //     document.getElementById('fingers-container').innerHTML = '';
+    //     document.getElementById('game-status').innerHTML = '';
+    //     // renove alert info
+
+    //     setTimeout(() => {
+    //         this.showFingers();
+    //     }, 750);
+    // }
+
+    sayYaso() {
+    const container = document.getElementById('chant-container');
+    container.innerHTML = '';
+    
+    const yasoDiv = document.createElement('div');
+    yasoDiv.className = 'chant-line yaso-animation'; // Added yaso-animation class
+    
+    // Create animated spans for each character
+    const yasoText = "🗣️ YASO! 🗣️" ;
+    yasoDiv.innerHTML = [...yasoText].map(char => 
+        `<span style="display:inline-block; font-size: 2rem;">${char}</span>`
+    ).join('');
+    
+    container.appendChild(yasoDiv);
+
+    document.getElementById('fingers-container').innerHTML = '';
+    document.getElementById('game-status').innerHTML = '';
+    // Add slight delay before showing fingers
+    setTimeout(() => {
+        this.showFingers();
+    }, 650); // Increased from 1000ms to account for animation
+}
 
     showFingers() {
         const fingerShows = {};
@@ -256,7 +283,7 @@ class AfterRoundOneGame {
 
         if (eliminated) {
             statusContainer.innerHTML = 
-                `<div class="alert alert-success">🎉 ${eliminated}'s number (${this.guesses[eliminated]}) was matched! E don go</div>`;
+                `<div class="alert alert-primary">🎉 ${eliminated}'s number (${this.guesses[eliminated]}) was matched! E don go</div>`;
             
             this.activePlayers = this.activePlayers.filter(p => p !== eliminated);
             this.eliminatedPlayers.push({
@@ -312,11 +339,11 @@ class AfterRoundOneGame {
         adjustmentContainer.className = 'adjustment-container mt-4 p-3 bg-light rounded';
         
         const heading = document.createElement('h5');
-        heading.textContent = '⚠️ Guess Adjustments Needed';
+        heading.textContent = '⚠️ You need to adjust some guesses now';
         adjustmentContainer.appendChild(heading);
 
         const explanation = document.createElement('p');
-        explanation.textContent = `Maximum possible total is now ${newMax}. Update these guesses:`;
+        explanation.textContent = `Maximum possible total of fingers is now ${newMax}. Update these guesses:`;
         adjustmentContainer.appendChild(explanation);
 
         const adjustmentList = document.createElement('div');
@@ -398,7 +425,7 @@ class AfterRoundOneGame {
     // Automatically proceed to next round after 1 second
     setTimeout(() => {
         this.roundNumber++;
-        this.playRound(); // Changed from prepareNextRound() to playRound()
+        this.playRound(); 
     }, 1000);
 }
 
@@ -419,13 +446,13 @@ class AfterRoundOneGame {
         nextRoundContainer.innerHTML = '';
 
         const winnersDiv = document.createElement('div');
-        winnersDiv.className = 'winners-container mb-4';
+        winnersDiv.className = 'winners-container';
         
         if (this.eliminatedPlayers.length === 1) {
             winnersDiv.innerHTML = `
                 <div class="winner-banner">
                     <h4>🏆 ${this.eliminatedPlayers[0].name} WINS! 🎉</h4>
-                    <p>Correct guess: ${this.eliminatedPlayers[0].guess}</p>
+                    <p class="mb-0">Correct guess: ${this.eliminatedPlayers[0].guess}</p>
                 </div>
             `;
         } else {
@@ -443,7 +470,7 @@ class AfterRoundOneGame {
         loserDiv.innerHTML = `
             <div class="alert alert-danger">
                 <h4>😬 ${loser} LOSES!</h4>
-                <p class="mb-0">Never guessed ${this.guesses[loser]}... SLAP THEIR HAND JOOR! 👋</p>
+                <p class="mb-0">Never guessed ${this.guesses[loser]}... SLAP HIN JOOR! 👋</p>
             </div>
         `;
         statusContainer.appendChild(loserDiv);
@@ -452,8 +479,8 @@ class AfterRoundOneGame {
             const slapDiv = document.createElement('div');
             slapDiv.className = 'slap-message p-3 bg-warning rounded mb-4';
             slapDiv.innerHTML = `
-                <h5>👋 Slap Time!</h5>
-                <p class="mb-0">All winners must join together to slap ${loser}'s hand!</p>
+                <h5>👋 Slap am!</h5>
+                <p class="mb-0">All winners must join together to slap ${loser}'s hand</p>
             `;
             statusContainer.appendChild(slapDiv);
         }

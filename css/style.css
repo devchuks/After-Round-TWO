@@ -223,14 +223,30 @@ body {
 
 /* Game UI Elements */
 #chant-container {
-    min-height: 60px;
+    /* min-height: 60px; */
     margin: 10px 0;
 }
 
 .chant-line {
     font-size: 1.2rem;
     margin: 8px 0;
+    font-weight:bold;
     text-align: center;
+}
+
+@keyframes yasoShake {
+    0% { transform: translateX(0) rotate(0deg); }
+    20% { transform: translateX(-5px) rotate(-5deg); }
+    40% { transform: translateX(5px) rotate(5deg); }
+    60% { transform: translateX(-5px) rotate(-5deg); }
+    80% { transform: translateX(5px) rotate(5deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+.yaso-animation {
+    display: inline-block;
+    animation: yasoShake 0.5s ease-in-out;
+    transform-origin: center center;
 }
 
 #fingers-container h5 {
@@ -313,10 +329,13 @@ body {
     background: #d1e7dd;
     padding: 12px;
     border-radius: 5px;
-    margin-bottom: 12px;
+    margin-bottom: 0px;
     text-align: center;
 }
 
+.winners-container {
+    margin-bottom: 0px;
+}
 .slap-message {
     background: #fff3cd;
     padding: 8px;
