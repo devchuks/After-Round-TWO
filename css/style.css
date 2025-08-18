@@ -2,14 +2,19 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
-    padding: 20px;
+    padding: 10px;
     margin: 0;
+}
+
+.py-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
 }
 
 .game-screen {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 /* Player Containers */
