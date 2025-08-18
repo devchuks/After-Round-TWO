@@ -465,10 +465,17 @@ class AfterRoundOneGame {
         nextRoundContainer.appendChild(playAgainBtn);
     }
 
+    // Add this to your class properties
+    loserEmojis = ["😭", "💀", "👎", "🙈", "🤦", "☠"];
+
+
     updatePlayersList() {
         const container = document.getElementById('players-list');
         container.innerHTML = '';
 
+        const loser = this.activePlayers.length === 1 ? this.activePlayers[0] : null;
+
+        //active players
         this.activePlayers.forEach(player => {
             const li = document.createElement('li');
             li.className = 'list-group-item player-item';
@@ -476,8 +483,17 @@ class AfterRoundOneGame {
             const nameSpan = document.createElement('span');
             nameSpan.textContent = player;
             
+            if (player === loser) {
+            nameSpan.classList.add('loser-name');
+            nameSpan.innerHTML += `<span class="loser-emoji"> ${
+            this.loserEmojis[Math.floor(Math.random() * this.loserEmojis.length)]
+                }</span>`;
+            }
+            
             const guessSpan = document.createElement('span');
-            guessSpan.className = 'badge bg-primary rounded-pill';
+            guessSpan.className = player === loser 
+                ? 'badge bg-danger rounded-pill loser-badge'
+                : 'badge bg-primary rounded-pill';
             guessSpan.textContent = this.guesses[player];
             
             li.appendChild(nameSpan);
@@ -485,12 +501,13 @@ class AfterRoundOneGame {
             container.appendChild(li);
         });
 
+        //eliminated players
         this.eliminatedPlayers.forEach(player => {
             const li = document.createElement('li');
             li.className = 'list-group-item player-item';
             
             const nameSpan = document.createElement('span');
-            nameSpan.innerHTML = `<span>${player.name}</span><span class="trophy">🏆</span>`;
+            nameSpan.innerHTML = `<span>${player.name}</span><span class="trophy"> 🏆</span>`;
             nameSpan.className = 'eliminated';
             
             const guessSpan = document.createElement('span');

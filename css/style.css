@@ -27,6 +27,27 @@ body {
     color: #000;
 }
 
+/* Add these styles */
+.loser-name {
+    color: #dc3545; /* Bootstrap danger red */
+    font-weight: bold;
+}
+
+.loser-badge {
+    background-color: #dc3545 !important; /* Red background */
+    animation: pulseDanger 0.5s infinite alternate;
+}
+
+@keyframes pulseDanger {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* .loser-emoji {
+    font-size: 1.2em;
+    margin-left: 5px;
+} */
+
 .fa-x-twitter {
     font-size: 0.9em;
 }
@@ -95,7 +116,7 @@ body {
 }
 
 .player-name {
-    /* font-weight: bold; */
+    font-weight: bold;
     font-size: 1rem;
 }
 
@@ -337,7 +358,7 @@ body {
 
 .eliminated {
     text-decoration: line-through;
-    color: #6c757d;
+    color: #198754;
 }
 
 .trophy {
