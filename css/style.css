@@ -340,6 +340,14 @@ body {
     color: #6c757d;
 }
 
+.trophy {
+    text-decoration: none !important;
+    color: inherit;
+    margin-left: 5px;
+    display: inline-block;
+    animation: bounce 0.5s ease infinite alternate;
+}
+
 /* Utility Classes */
 .d-none {
     display: none !important;

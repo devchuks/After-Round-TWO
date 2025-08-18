@@ -490,7 +490,7 @@ class AfterRoundOneGame {
             li.className = 'list-group-item player-item';
             
             const nameSpan = document.createElement('span');
-            nameSpan.textContent = "🏆" + player.name;
+            nameSpan.innerHTML = `<span>${player.name}</span><span class="trophy">🏆</span>`;
             nameSpan.className = 'eliminated';
             
             const guessSpan = document.createElement('span');
