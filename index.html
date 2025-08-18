@@ -11,7 +11,7 @@
 <body>
     <div class="container py-5">
         <div id="setup-screen" class="game-screen">
-            <h1 class="text-center mb-4">👋 AFTER ROUND ONE JARE</h1>
+            <h1 class="text-center mb-4">👋 ORIGINAL PANADOL EXTRA</h1>
             <div class="card shadow">
                 <div class="card-body">
                     <div class="mb-4">
@@ -20,20 +20,28 @@
                     </div>
                     <div id="player-names-container"></div>
                     <button id="start-game" class="btn btn-primary w-100 mt-3">Start Game</button>
+                    <button id="how-to-play-btn" class="btn btn-link mt-3">
+                <i class="fas fa-question-circle"></i> How to Play
+            </button>
                 </div>
             </div>
         </div>
 
         <div id="guess-screen" class="game-screen d-none">
-            <h2 class="text-center mb-4">Enter Your Guesses</h2>
-            <div class="card shadow">
-                <div class="card-body">
-                    <p id="guess-instructions" class="mb-4"></p>
-                    <div id="guess-inputs"></div>
-                    <button id="submit-guesses" class="btn btn-primary w-100 mt-3">Submit Guesses</button>
-                </div>
+    <h2 class="text-center mb-4">Enter Your Guesses</h2>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <p id="guess-instructions" class="mb-0"></p>
+                <button id="randomize-guesses" class="btn btn-outline-secondary">
+                    <i class="fas fa-dice"></i> Randomize
+                </button>
             </div>
+            <div id="guess-inputs"></div>
+            <button id="submit-guesses" class="btn btn-primary w-100 mt-3">Submit Guesses</button>
         </div>
+    </div>
+</div>
 
         <div id="game-screen" class="game-screen d-none">
             <div class="row">
@@ -79,6 +87,42 @@
             </div>
         </div>
     </div>
+
+<div class="modal fade" id="howToPlayModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">How to Play After Round One</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ratio ratio-16x9 mb-4">
+                    <iframe src="https://www.youtube.com/embed/iia-Srv5Ogw" 
+                            title="After Round One Tutorial" 
+                            allowfullscreen></iframe>
+                </div>
+                
+                <ul class="list-unstyled">
+                    <li class="mb-2">🎮 <strong>Set up:</strong> Add players (2+ people)</li>
+                    <li class="mb-2">🔢 <strong>Guess:</strong> Pick unique numbers (0 to max fingers possible)</li>
+                    <li class="mb-2">✋ <strong>Play:</strong> Everyone shows 0-5 fingers at the same time</li>
+                    <li class="mb-2">🎉 <strong>Win/Lose:</strong> If your guess matches total fingers - YOU'RE OUT! (Yes, that's good!)</li>
+                    <li class="mb-2">😱 <strong>Finale:</strong> Last player standing gets HAND SLAPS from everyone!</li>
+                </ul>
+                
+                <div class="alert alert-warning mt-3">
+                    <i class="fas fa-volume-up"></i> <strong>Pro Tip:</strong> 
+                    Shout "YASO!" when someone gets out - it's tradition!
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                    <i class="fas fa-thumbs-up"></i> Got it, let's play!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/game.js"></script>

@@ -17,10 +17,30 @@ class AfterRoundOneGame {
         document.getElementById('player-count').addEventListener('input', this.updatePlayerNameInputs.bind(this));
         document.getElementById('start-game').addEventListener('click', this.startGame.bind(this));
         document.getElementById('submit-guesses').addEventListener('click', this.submitGuesses.bind(this));
-    
+        document.getElementById('randomize-guesses').addEventListener('click', this.randomizeGuesses.bind(this));
+        document.getElementById('how-to-play-btn').addEventListener('click', () => {
+            new bootstrap.Modal(document.getElementById('howToPlayModal')).show();
+        });
         // Ensure inputs are rendered on first load
         this.updatePlayerNameInputs();
     }
+
+    randomizeGuesses() {
+    const inputs = document.querySelectorAll('.player-guess');
+    const max = this.players.length * 5;
+    const usedNumbers = new Set();
+    
+    // Generate unique random numbers for each player
+    inputs.forEach(input => {
+        let randomNum;
+        do {
+            randomNum = Math.floor(Math.random() * (max + 1)); // 0 to max inclusive
+        } while (usedNumbers.has(randomNum));
+        
+        usedNumbers.add(randomNum);
+        input.value = randomNum;
+    });
+}
 
     updatePlayerNameInputs() {
         const playerCount = parseInt(document.getElementById('player-count').value) || 2;
@@ -72,7 +92,7 @@ class AfterRoundOneGame {
         const min = 0;
         const max = this.players.length * 5;
         document.getElementById('guess-instructions').textContent = 
-            `Each player must choose a unique number between ${min} and ${max}`;
+            `Each player must choose a unique number of fingers between ${min} and ${max}`;
 
         const container = document.getElementById('guess-inputs');
         container.innerHTML = '';
