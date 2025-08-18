@@ -525,6 +525,11 @@ class AfterRoundOneGame {
         document.getElementById('setup-screen').classList.remove('d-none');
         document.getElementById('game-status').innerHTML = '';
         document.getElementById('next-round-container').innerHTML = '';
+        document.getElementById('fingers-container').innerHTML = '';
+
+         // Reset player inputs
+    document.getElementById('player-names-container').innerHTML = '';
+    this.updatePlayerNameInputs();
         
         this.players = [];
         this.guesses = {};
