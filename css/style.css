@@ -101,11 +101,11 @@ body {
 }
 
 .players-container.three-players .player-container:nth-child(2) .hand-svg {
-    transform: rotate(90deg);
+    transform: rotate(60deg);
 }
 
 .players-container.three-players .player-container:nth-child(3) .hand-svg {
-    transform: rotate(-90deg);
+    transform: rotate(-60deg);
 }
 
 /* 4 Players - X Formation */
