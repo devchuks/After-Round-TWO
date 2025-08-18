@@ -92,7 +92,7 @@ class AfterRoundOneGame {
         const min = 0;
         const max = this.players.length * 5;
         document.getElementById('guess-instructions').textContent = 
-            `Each player must choose a unique number of fingers between ${min} and ${max}`;
+            `Each player must select a number of fingers that hasn't already been chosen by someone else from ${min} and ${max}`;
 
         const container = document.getElementById('guess-inputs');
         container.innerHTML = '';
